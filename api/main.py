@@ -3,6 +3,9 @@ from pydantic import BaseModel
 from src.predict import load_model, predict
 import sqlite3
 import time
+from prometheus_client import Counter, generate_latest
+from fastapi.responses import PlainTextResponse
+
 
 app = FastAPI()
 model = load_model()
@@ -26,6 +29,14 @@ class IrisInput(BaseModel):
     sepal_wid: float
     petal_len: float
     petal_wid: float
+
+
+# Metric counter
+PREDICTION_COUNT = Counter("prediction_requests_total", "Total prediction requests")
+
+@app.get("/metrics")
+def metrics():
+    return PlainTextResponse(generate_latest(), media_type="text/plain")
 
 @app.post("/predict")
 def get_prediction(input: IrisInput):
