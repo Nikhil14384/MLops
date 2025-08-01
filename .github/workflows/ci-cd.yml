@@ -37,4 +37,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Push Docker image
-      run: docker push nikhil14384/mlops-iris:latest
+      run: docker push nikhil143844/mlops-iris:latest
