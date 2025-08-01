@@ -28,7 +28,7 @@ jobs:
         python src/train.py
 
     - name: Build Docker image
-      run: docker build -t nikhil14384/mlops-iris:latest .
+      run: docker build -t nikhil143844/mlops-iris:latest .
 
     - name: Login to DockerHub
       uses: docker/login-action@v3
