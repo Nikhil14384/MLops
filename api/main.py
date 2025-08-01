@@ -44,6 +44,10 @@ def get_prediction(input: IrisInput):
         data = [input.sepal_len, input.sepal_wid, input.petal_len, input.petal_wid]
         result = predict(model, data)
         log_prediction(data, result)
+
+        # Increase Prometheus counter
+        PREDICTION_COUNT.inc()
+        
         return {"prediction": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
