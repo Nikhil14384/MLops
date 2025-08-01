@@ -22,8 +22,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run train script
-      run: python src/train.py
+    - name: Train model
+      run: |
+        mkdir -p models
+        python src/train.py
 
     - name: Build Docker image
       run: docker build -t nikhil14384/mlops-iris:latest .
@@ -36,4 +38,3 @@ jobs:
 
     - name: Push Docker image
       run: docker push nikhil14384/mlops-iris:latest
-
