@@ -1,1 +1,8 @@
-# List of dependencies
+pandas
+scikit-learn
+mlflow
+joblib
+fastapi
+uvicorn
+pydantic
+sqlite3  # (built-in, no need to install separately)
